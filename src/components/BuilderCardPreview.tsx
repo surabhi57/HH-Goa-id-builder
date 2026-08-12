@@ -60,7 +60,7 @@ export const BuilderCardPreview: React.FC<BuilderCardPreviewProps> = ({
           <span>HH GOA 2026 • OFFICIAL BUILDER PASS</span>
         </div>
         <div className="card-header-subtitle opacity-80 text-[10px] mt-1">
-          HACKER HOUSE GOA • MARCH 2026
+          {data.teamName ? `${data.teamName.toUpperCase()} • HACKER HOUSE GOA` : 'HACKER HOUSE GOA • MARCH 2026'}
         </div>
       </div>
 

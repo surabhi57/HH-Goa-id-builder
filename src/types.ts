@@ -32,6 +32,7 @@ export interface BuilderMember {
 }
 
 export interface BuilderData {
+  teamName?: string;
   name: string;
   handle: string;
   photoUrl: string | null;

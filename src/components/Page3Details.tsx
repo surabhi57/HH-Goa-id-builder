@@ -132,6 +132,7 @@ export const Page3Details: React.FC<Page3DetailsProps> = ({
   const isFormValid = teamData.members.every((m) => m.name.trim().length > 0 && m.photoUrl);
 
   const activeBuilderData = {
+    teamName: teamData.teamName,
     name: activeMember.name,
     handle: activeMember.handle,
     photoUrl: activeMember.photoUrl,
@@ -148,8 +149,8 @@ export const Page3Details: React.FC<Page3DetailsProps> = ({
   };
 
   return (
-    <div className="fade-in container-custom max-w-6xl mx-auto py-2">
-      {/* Compact Header */}
+    <div className="page3-details fade-in container-custom max-w-6xl mx-auto py-2">
+      {/* Header */}
       <div className="text-center mb-3">
         <span className="step-badge text-[11px] py-1 px-3">STEP 03 OF 4</span>
         <h2 className="font-crimson text-3xl sm:text-4xl font-bold text-yellow-400 tracking-tight leading-tight mt-0.5">
@@ -157,18 +158,17 @@ export const Page3Details: React.FC<Page3DetailsProps> = ({
         </h2>
       </div>
 
-      {/* Single-Screen Desktop Workspace (Two Compact Panels) */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
+      {/* Two Compact Side-by-Side Panels Grid */}
+      <div className="page3-panels">
         {/* LEFT CARD: "Build Your Pass" */}
-        <div className="lg:col-span-7 flex flex-col">
-          <div className="step-card p-4 sm:p-5 rounded-3xl border-2 border-yellow-400/35 bg-emerald-950/90 shadow-2xl backdrop-blur-xl flex-1 flex flex-col justify-between">
+        <div className="details-panel">
+          <div className="step-card details-form-card p-4 sm:p-5 rounded-3xl border-2 border-yellow-400/35 bg-emerald-950/90 shadow-2xl backdrop-blur-xl flex-1 flex flex-col justify-between">
             {/* Squad Header Tabs (Team Mode) */}
-            {teamData.mode === 'team' && (
-              <div className="team-header-box mb-3 p-2.5 bg-emerald-900/60 rounded-xl border border-yellow-400/30">
+            {teamData.mode === 'team' && <div className="team-header-box mb-3 p-2.5 bg-emerald-900/60 rounded-xl border border-yellow-400/30">
                 <div className="input-group mb-2">
                   <label className="input-label text-yellow-400 text-xs">
                     <Users className="w-3.5 h-3.5 text-pink-500" />
-                    <span className="font-crimson text-sm font-bold">Squad / Team Name *</span>
+                    <span className="font-crimson text-sm font-bold">Squad / Team Name</span>
                   </label>
                   <input
                     type="text"
@@ -214,8 +214,7 @@ export const Page3Details: React.FC<Page3DetailsProps> = ({
                     </button>
                   )}
                 </div>
-              </div>
-            )}
+              </div>}
 
             {/* Form Inputs Container */}
             <div className="form-sections space-y-3">
@@ -410,7 +409,7 @@ export const Page3Details: React.FC<Page3DetailsProps> = ({
                 <label className="input-label text-xs">
                   <span className="font-crimson text-sm font-bold">Select Goa Vibe</span>
                 </label>
-                <div className="flex flex-wrap gap-1.5 mt-0.5">
+                <div className="page3-vibe-grid flex flex-wrap gap-1.5 mt-0.5">
                   {PRESET_VIBES.map((v) => {
                     const isSelected = activeMember.vibe === v.id;
                     return (
@@ -445,7 +444,7 @@ export const Page3Details: React.FC<Page3DetailsProps> = ({
                   </button>
                 </div>
 
-                <div className="generated-title-box py-1.5 px-2.5">
+                <div className="generated-title-box editable-title-box py-1.5 px-2.5"><input type="text" aria-label="Builder Class Title" placeholder="e.g. Pixel & Protocol Alchemist" value={activeMember.generatedTitle} onChange={(e) => updateActiveMember({ generatedTitle: e.target.value })} className="builder-title-input" />
                   <span className="title-text text-xs">
                     ⚡ {activeMember.generatedTitle || 'Goa Code Alchemist'} ⚡
                   </span>
@@ -471,23 +470,67 @@ export const Page3Details: React.FC<Page3DetailsProps> = ({
           </div>
         </div>
 
-        {/* RIGHT CARD: "Live Pass Preview" */}
-        <div className="lg:col-span-5 flex flex-col justify-center">
+        {/* RIGHT CARD: "Live Pass Preview" inside Realistic Laptop Mockup Screen */}
+        <div className="camera-preview-panel flex flex-col justify-center">
           <div className="p-4 rounded-3xl border-2 border-yellow-400/40 bg-emerald-950/95 shadow-2xl backdrop-blur-xl flex flex-col items-center justify-between h-full">
             <div className="flex items-center gap-1.5 mb-2">
-              <Sparkles className="w-4 h-4 text-yellow-400 animate-pulse" />
+              <Camera className="w-4 h-4 text-yellow-400 animate-pulse" />
               <h3 className="font-crimson text-lg font-bold text-yellow-400 tracking-wide">
                 LIVE PASS PREVIEW
               </h3>
             </div>
 
-            {/* Perfectly Sized Collectible Builder Pass Card */}
-            <div className="w-full flex justify-center items-center py-1">
-              <BuilderCardPreview data={activeBuilderData} className="w-full max-w-[310px] shadow-2xl" />
+            <div className="retro-camera" aria-label="Live Builder ID preview camera">
+              <div className="camera-top"><span className="camera-mark">HH GOA</span><span className="camera-shutter" /><span className="camera-flash" /></div>
+              <span className="camera-star star-one">✦</span><span className="camera-star star-two">✦</span>
+              <div className="camera-screen-frame"><div className="camera-screen">
+                <span className="screen-live"><i /> LIVE PREVIEW</span>
+                <div className="camera-pass-preview">
+                  <p className="camera-pass-kicker">{teamData.teamName || 'HH GOA 2026'} · OFFICIAL BUILDER PASS</p>
+                  <p className="camera-pass-event">HACKER HOUSE GOA · MARCH 2026</p>
+                  <div className="camera-pass-avatar">
+                    {activeMember.photoUrl ? <img src={activeMember.photoUrl} alt="Builder" style={{ transform: `scale(${activeMember.photoZoom}) translate(${activeMember.photoOffsetX}px, ${activeMember.photoOffsetY}px)` }} /> : <span>{(activeMember.name || 'Y').charAt(0).toUpperCase()}</span>}
+                  </div>
+                  <h4>{activeMember.name || 'YOUR BUILDER NAME'}</h4>
+                  <p className="camera-pass-handle">{activeMember.handle || '@builder_handle'}</p>
+                  <p className="camera-pass-title">{activeMember.generatedTitle || 'Goa Code Alchemist'}</p>
+                  <div className="camera-pass-badges"><span>{PRESET_ROLES.find((role) => role.id === activeMember.role)?.icon} {PRESET_ROLES.find((role) => role.id === activeMember.role)?.label || 'Builder'}</span><span>{PRESET_VIBES.find((vibe) => vibe.id === activeMember.vibe)?.emoji} {PRESET_VIBES.find((vibe) => vibe.id === activeMember.vibe)?.label || 'Goa Vibes'}</span></div>
+                  <div className="camera-pass-footer"><span>#FrameInGoa</span><span>GOA, INDIA</span></div>
+                </div>
+                <span className="screen-id">BUILDER ID · {activeMember.id.replace('member-', 'HHG-')}</span>
+              </div></div>
+              <div className="camera-controls"><span className="camera-mini-button" /><span className="camera-mini-button" /><span className="camera-dial"><span>●</span></span><span className="camera-slider" /></div>
+              <span className="camera-brand">FRAME IN GOA</span>
+            </div>
+
+            {/* 💻 Realistic Laptop Hardware Device Frame */}
+            <div className="laptop-device-frame w-full max-w-[340px] my-auto">
+              {/* Laptop Screen Window Bezel */}
+              <div className="laptop-screen-bezel">
+                {/* IDE Header Bar */}
+                <div className="laptop-screen-header">
+                  <div className="flex items-center gap-1.5">
+                    <span className="w-2.5 h-2.5 rounded-full bg-rose-500" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-yellow-400" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
+                  </div>
+                  <span className="laptop-header-title">hh_goa_2026.ts</span>
+                </div>
+
+                {/* Inner Laptop Screen Viewport */}
+                <div className="laptop-screen-viewport p-2 bg-emerald-950 flex items-center justify-center">
+                  <BuilderCardPreview data={activeBuilderData} className="w-full max-w-[280px] scale-95 shadow-xl" />
+                </div>
+              </div>
+
+              {/* Metallic Laptop Keyboard Base */}
+              <div className="laptop-keyboard-base">
+                <div className="laptop-trackpad" />
+              </div>
             </div>
 
             <p className="preview-hint mt-2 text-center text-[11px] text-emerald-200">
-              ✨ Updates live in real-time as you enter details
+              ✨ Updates live in real-time inside your Goan developer laptop
             </p>
           </div>
         </div>

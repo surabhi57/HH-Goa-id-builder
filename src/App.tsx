@@ -68,7 +68,7 @@ export const App: React.FC = () => {
       setTeamData((prev) => ({
         ...prev,
         mode: 'team',
-        teamName: prev.teamName || 'WaveHackers Goa',
+        teamName: prev.teamName,
         members: prev.members.length > 1 ? prev.members : [leader, teammate2],
       }));
     }
