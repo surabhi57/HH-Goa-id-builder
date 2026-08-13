@@ -480,6 +480,7 @@ export const Page3Details: React.FC<Page3DetailsProps> = ({
               </h3>
             </div>
 
+            <div className="camera-preview-stage">
             <div className="retro-camera" aria-label="Live Builder ID preview camera">
               <div className="camera-top"><span className="camera-mark">HH GOA</span><span className="camera-shutter" /><span className="camera-flash" /></div>
               <span className="camera-star star-one">✦</span><span className="camera-star star-two">✦</span>
@@ -501,6 +502,7 @@ export const Page3Details: React.FC<Page3DetailsProps> = ({
               </div></div>
               <div className="camera-controls"><span className="camera-mini-button" /><span className="camera-mini-button" /><span className="camera-dial"><span>●</span></span><span className="camera-slider" /></div>
               <span className="camera-brand">FRAME IN GOA</span>
+            </div>
             </div>
 
             {/* 💻 Realistic Laptop Hardware Device Frame */}
