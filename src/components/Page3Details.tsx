@@ -132,6 +132,7 @@ export const Page3Details: React.FC<Page3DetailsProps> = ({
   const isFormValid = teamData.members.every((m) => m.name.trim().length > 0 && m.photoUrl);
 
   const activeBuilderData = {
+    builderId: activeMember.builderId,
     teamName: teamData.teamName,
     name: activeMember.name,
     handle: activeMember.handle,
@@ -498,7 +499,7 @@ export const Page3Details: React.FC<Page3DetailsProps> = ({
                   <div className="camera-pass-badges"><span>{PRESET_ROLES.find((role) => role.id === activeMember.role)?.icon} {PRESET_ROLES.find((role) => role.id === activeMember.role)?.label || 'Builder'}</span><span>{PRESET_VIBES.find((vibe) => vibe.id === activeMember.vibe)?.emoji} {PRESET_VIBES.find((vibe) => vibe.id === activeMember.vibe)?.label || 'Goa Vibes'}</span></div>
                   <div className="camera-pass-footer"><span>#FrameInGoa</span><span>GOA, INDIA</span></div></div>
                 </div>
-                <span className="screen-id">BUILDER ID · {activeMember.id.replace('member-', 'HHG-')}</span>
+                <span className="screen-id">BUILDER ID · {activeMember.builderId || 'PENDING'}</span>
               </div></div>
               <div className="camera-controls"><span className="camera-mini-button" /><span className="camera-mini-button" /><span className="camera-dial"><span>●</span></span><span className="camera-slider" /></div>
               <span className="camera-brand">FRAME IN GOA</span>

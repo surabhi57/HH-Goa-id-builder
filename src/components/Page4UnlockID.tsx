@@ -36,6 +36,7 @@ export const Page4UnlockID: React.FC<Page4UnlockIDProps> = ({
   const activeMember = teamData.members[activeCardIndex] || teamData.members[0];
 
   const activeBuilderData = {
+    builderId: activeMember.builderId,
     teamName: teamData.teamName,
     name: activeMember.name,
     handle: activeMember.handle,

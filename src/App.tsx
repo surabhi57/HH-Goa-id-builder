@@ -7,6 +7,7 @@ import { Page1Landing } from './components/Page1Landing';
 import { Page2ChooseMode } from './components/Page2ChooseMode';
 import { Page3Details } from './components/Page3Details';
 import { Page4UnlockID } from './components/Page4UnlockID';
+import { createBuilderId } from './utils/builderId';
 import './index.css';
 
 const INITIAL_TEAM_DATA: TeamData = {
@@ -106,6 +107,18 @@ export const App: React.FC = () => {
     navigateToPage(1);
   };
 
+  const handleGeneratePass = () => {
+    setTeamData((prev) => {
+      const used = new Set(prev.members.flatMap((member) => member.builderId ? [member.builderId] : []));
+      return { ...prev, unlocked: true, members: prev.members.map((member) => {
+        if (member.builderId) return member;
+        const builderId = createBuilderId(used); used.add(builderId);
+        return { ...member, builderId };
+      }) };
+    });
+    navigateToPage(4);
+  };
+
   const activeMember = teamData.members[0] || DEFAULT_MEMBER;
   const hasData = Boolean(activeMember.name || activeMember.photoUrl);
 
@@ -161,7 +174,7 @@ export const App: React.FC = () => {
             <Page3Details
               teamData={teamData}
               onChangeTeam={updateTeamData}
-              onNext={() => navigateToPage(4)}
+              onNext={handleGeneratePass}
               onPrev={() => navigateToPage(2)}
             />
           )}

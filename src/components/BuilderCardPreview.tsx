@@ -62,6 +62,7 @@ export const BuilderCardPreview: React.FC<BuilderCardPreviewProps> = ({
         <div className="card-header-subtitle opacity-80 text-[10px] mt-1">
           {data.teamName ? `${data.teamName.toUpperCase()} • HACKER HOUSE GOA` : 'HACKER HOUSE GOA • MARCH 2026'}
         </div>
+        <div className="builder-id-stamp">BUILDER ID · {data.builderId || 'PENDING'}</div>
       </div>
 
       {/* Center Avatar Frame */}

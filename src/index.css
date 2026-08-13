@@ -1345,6 +1345,7 @@ body {
   color: var(--hh-yellow-electric);
   letter-spacing: -0.01em;
 }
+.builder-id-stamp { display:inline-block; margin-top:.45rem; padding:.22rem .55rem; border:1px solid currentColor; border-radius:999px; font:800 .59rem ui-monospace, "Courier New", monospace; letter-spacing:.08em; }
 
 /* ----------------------------------------------------
    PAGE 4: DRAMATIC UNLOCK REVEAL

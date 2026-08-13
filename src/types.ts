@@ -17,6 +17,7 @@ export interface CardTheme {
 
 export interface BuilderMember {
   id: string;
+  builderId?: string;
   memberName: string;
   name: string;
   handle: string;
@@ -33,6 +34,7 @@ export interface BuilderMember {
 
 export interface BuilderData {
   teamName?: string;
+  builderId?: string;
   name: string;
   handle: string;
   photoUrl: string | null;
