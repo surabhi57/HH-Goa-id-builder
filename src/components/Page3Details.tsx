@@ -486,7 +486,7 @@ export const Page3Details: React.FC<Page3DetailsProps> = ({
               <span className="camera-star star-one">✦</span><span className="camera-star star-two">✦</span>
               <div className="camera-screen-frame"><div className="camera-screen">
                 <span className="screen-live"><i /> LIVE PREVIEW</span>
-                <div className="camera-pass-preview">
+                <div className="camera-pass-preview"><div className="camera-pass-content">
                   <p className="camera-pass-kicker">{teamData.teamName || 'HH GOA 2026'} · OFFICIAL BUILDER PASS</p>
                   <p className="camera-pass-event">HACKER HOUSE GOA · MARCH 2026</p>
                   <div className="camera-pass-avatar">
@@ -496,7 +496,7 @@ export const Page3Details: React.FC<Page3DetailsProps> = ({
                   <p className="camera-pass-handle">{activeMember.handle || '@builder_handle'}</p>
                   <p className="camera-pass-title">{activeMember.generatedTitle || 'Goa Code Alchemist'}</p>
                   <div className="camera-pass-badges"><span>{PRESET_ROLES.find((role) => role.id === activeMember.role)?.icon} {PRESET_ROLES.find((role) => role.id === activeMember.role)?.label || 'Builder'}</span><span>{PRESET_VIBES.find((vibe) => vibe.id === activeMember.vibe)?.emoji} {PRESET_VIBES.find((vibe) => vibe.id === activeMember.vibe)?.label || 'Goa Vibes'}</span></div>
-                  <div className="camera-pass-footer"><span>#FrameInGoa</span><span>GOA, INDIA</span></div>
+                  <div className="camera-pass-footer"><span>#FrameInGoa</span><span>GOA, INDIA</span></div></div>
                 </div>
                 <span className="screen-id">BUILDER ID · {activeMember.id.replace('member-', 'HHG-')}</span>
               </div></div>
