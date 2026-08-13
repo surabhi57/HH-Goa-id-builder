@@ -48,6 +48,47 @@ body {
 .font-syne { font-family: var(--font-syne); }
 .font-script { font-family: var(--font-script); }
 
+/* Typewriter voice for supporting UI; display headings retain the editorial serif. */
+.input-label,
+.text-input,
+.btn-primary-gradient,
+.btn-secondary,
+.btn-danger-light,
+.step-badge,
+.step-subheading,
+.preview-hint,
+.landing-postmark,
+.landing-subtitle,
+.landing-date,
+.landing-demo,
+.compact-role-chip,
+.compact-vibe-pill,
+.member-tab-btn,
+.team-reveal-tag,
+.card-handle,
+.card-title-text,
+.card-role-badge,
+.card-vibe-badge,
+.card-footer,
+.screen-live,
+.screen-id {
+  font-family: ui-monospace, "Courier New", monospace;
+}
+
+/* Editorial display serif for primary headings and feature names only. */
+.step-heading,
+.mode-card-title,
+.dropzone-title,
+.landing-retro-title,
+.card-name,
+.camera-pass-preview h4,
+.generated-title-box .title-text,
+.team-reveal-tag {
+  font-family: var(--font-crimson);
+  font-weight: 700;
+  letter-spacing: .015em;
+}
+
 /* Common Utility Classes */
 .hidden { display: none !important; }
 .flex { display: flex; }
@@ -504,7 +545,10 @@ body {
 .landing-page-container .landing-content-overlay { z-index: 4; }
 .landing-page-container::before { content: ''; position: fixed; top: 70px; left: 0; right: 0; height: 280px; z-index: 1; pointer-events: none; }
 .wave-bg-container .fullpage-clouds-layer, .wave-bg-container .fullpage-birds-layer { z-index: 2; }
+.landing-page-container::after { content: ''; position:absolute; z-index:2; top:66px; left:6%; width:138px; height:34px; border-radius:50px; background:#fff8e8; box-shadow:36px 8px 0 3px #fff8e8, 250px 42px 0 -2px #fff8e8, 286px 48px 0 2px #fff8e8, 700px -4px 0 -2px #fff8e8, 738px 2px 0 4px #fff8e8; opacity:.94; animation: landingCloudDrift 24s ease-in-out infinite alternate; pointer-events:none; }
+@keyframes landingCloudDrift { to { transform:translateX(90px); } }
 .landing-beach-background { position:absolute; inset:0; overflow:hidden; }.landing-beach-background svg { width:100%; height:100%; min-height:720px; display:block; }.landing-content-overlay { position:relative; z-index:2; min-height:720px; padding:2rem 1rem 12rem; display:flex; flex-direction:column; align-items:center; text-align:center; background:linear-gradient(180deg,rgba(0,43,32,.18),rgba(0,43,32,.68) 49%,rgba(0,43,32,.07) 77%,rgba(0,43,32,.2)); }.landing-back { position:absolute; top:1.25rem; left:1.5rem; width:42px; height:42px; border-radius:50%; border:1px solid rgba(250,204,21,.72); color:#facc15; background:rgba(5,46,34,.58); font:700 25px/1 ui-monospace,monospace; cursor:pointer; }.landing-date { margin:.7rem 0 1rem; color:#8fe6bd; font:700 1rem ui-monospace,monospace; letter-spacing:.08em; }
+.landing-sun { position:absolute; z-index:2; top:55px; right:6%; width:108px; height:108px; border-radius:50%; background:radial-gradient(circle at 35% 30%, #fff46d, #facc15 62%, #eaa80c); box-shadow:0 0 0 12px rgba(250,204,21,.12),0 0 0 24px rgba(250,204,21,.08),0 0 38px rgba(250,204,21,.76); animation:landingSunGlow 4s ease-in-out infinite alternate; pointer-events:none; }.landing-sun::after { content:''; position:absolute; inset:-18px; border:2px dashed rgba(250,204,21,.7); border-radius:50%; animation:sunRingRotate 22s linear infinite; }@keyframes landingSunGlow { to { transform:scale(1.06); box-shadow:0 0 0 15px rgba(250,204,21,.17),0 0 0 30px rgba(250,204,21,.08),0 0 48px rgba(250,204,21,.9); } }
 .landing-page-container { position: relative; min-height: calc(100vh - 150px); overflow: hidden; }
 .landing-hero-content { max-width: 930px; min-height: 700px; padding: 2.25rem 1rem 12rem; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; position: relative; z-index: 3; }
 .landing-natural-scene { position: absolute; inset: 0; z-index: 0; pointer-events: none; background: linear-gradient(180deg, rgba(4,70,51,.2), rgba(2,45,33,.56)); }.landing-ocean { position: absolute; left: -5%; right: -5%; bottom: 19%; height: 25%; background: repeating-radial-gradient(ellipse at 40% 0%, rgba(209,255,231,.34) 0 2px, transparent 3px 17px), linear-gradient(#118363, #075a45); opacity: .9; }.landing-sand { position: absolute; left: -5%; right: -5%; bottom: -7%; height: 28%; background: radial-gradient(ellipse at 30% 20%, #ffedbe 0 3%, transparent 3.5%), radial-gradient(ellipse at 72% 42%, #f8d996 0 2%, transparent 2.5%), #edcd86; transform: rotate(-2deg); }
@@ -954,7 +998,7 @@ body {
 }
 
 .step-heading {
-  font-family: var(--font-syne);
+  font-family: var(--font-crimson);
   font-weight: 800;
   font-size: 1.75rem;
   color: var(--hh-yellow-electric);

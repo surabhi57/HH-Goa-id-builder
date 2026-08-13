@@ -26,6 +26,7 @@ export const Page1Landing: React.FC<Page1LandingProps> = ({ onEnter, onTryDemo }
         <g className="landing-beach-shells" fill="#f7e1bb" stroke="#bb8b5c" strokeWidth="4"><path d="M86 842q42-63 86 0z"/><path d="M112 824v18M135 809v33M156 823v19"/><path d="M1250 838q48-72 97 0z"/><path d="M1275 817v22M1300 803v36M1325 819v20"/><path d="M1190 848l34-44 30 42z" fill="#f38aa1"/></g>
       </svg>
     </div>
+    <div className="landing-sun" aria-hidden="true" />
     <div className="landing-content-overlay">
       <button type="button" className="landing-back" aria-label="Back">←</button>
       <p className="landing-postmark">BUILD · CONNECT · CREATE</p>
